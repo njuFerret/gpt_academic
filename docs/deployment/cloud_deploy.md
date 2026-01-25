@@ -227,5 +227,3 @@ ZHIPUAI_API_KEY=xxx
 - [Docker 部署](docker.md) — 在自己的服务器上使用 Docker 部署
 - [配置详解](../get_started/configuration.md) — 了解所有可用的配置选项
 - [反向代理](reverse_proxy.md) — 使用 Nginx 配置反向代理和 HTTPS
-
-

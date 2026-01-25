@@ -18,7 +18,7 @@
 
 !!! info "关于 tiktoken 依赖"
     Markdown 翻译功能依赖 `tiktoken` 库来计算文本长度和智能分片。这个依赖通常会在安装项目时自动安装。如果启动时提示缺少此依赖，请执行：
-    
+
     ```bash
     pip install --upgrade tiktoken
     ```
@@ -126,30 +126,30 @@ Keep the following terms untranslated: API, SDK, Docker, Kubernetes
 
 ???+ question "翻译后的格式出现问题，比如代码块被破坏"
     这种情况较少发生，但可能在某些复杂文档中出现。建议：
-    
+
     1. 检查原文档的 Markdown 语法是否规范
     2. 尝试切换到能力更强的模型（如 GPT-4）
     3. 对于问题片段，可以手动修复后在本地重新编辑
 
 ???+ question "GitHub 链接无法获取 README"
     可能的原因包括：
-    
+
     1. **私有仓库**：本功能仅支持公开仓库
     2. **网络问题**：如使用代理，请确保代理配置正确
     3. **API 限制**：GitHub API 有访问频率限制，稍后重试
-    
+
     如果持续失败，可以手动下载 README 文件到本地，然后用本地路径进行翻译。
 
 ???+ question "翻译速度很慢"
     文档翻译速度主要取决于文档长度和 API 响应速度。优化建议：
-    
+
     1. 使用响应更快的模型，如 `gpt-3.5-turbo` 或 `qwen-turbo`
     2. 确保网络连接稳定
     3. 对于特别长的文档，系统会自动分片并行处理，耐心等待即可
 
 ???+ question "中译英的翻译质量不理想"
     中译英比英译中更具挑战性。可以尝试：
-    
+
     1. 使用能力更强的模型，如 GPT-4o 或 Claude
     2. 在高级参数中添加"请使用专业的技术文档风格翻译"
     3. 翻译后人工审校关键内容
@@ -161,5 +161,3 @@ Keep the following terms untranslated: API, SDK, Docker, Kubernetes
 - [基础操作](../basic_operations.md) — 了解文件上传等基础操作
 - [源码分析](code_analysis.md) — 分析和理解代码项目
 - [配置详解](../../get_started/configuration.md) — 模型和代理的配置说明
-
-

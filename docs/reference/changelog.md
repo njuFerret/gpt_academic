@@ -116,5 +116,3 @@ GPT Academic 是一个开源项目，欢迎社区贡献。如果您发现了 Bug
 - [安装指南](../get_started/installation.md) — 首次安装和环境配置
 - [配置参考](config_reference.md) — 所有配置项说明
 - [常见问题](../troubleshooting/faq.md) — 使用问题解答
-
-

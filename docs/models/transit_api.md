@@ -161,10 +161,10 @@ AVAIL_LLM_MODELS = ["gpt-4o-mini", "gpt-4o", "gpt-4-turbo", "gpt-3.5-turbo"]
 API_URL_REDIRECT = {
     # OpenAI 聊天接口重定向
     "https://api.openai.com/v1/chat/completions": "https://proxy.example.com/v1/chat/completions",
-    
+
     # Claude 接口重定向（如果需要）
     "https://api.anthropic.com/v1/messages": "https://proxy.example.com/anthropic/v1/messages",
-    
+
     # Embedding 接口也会自动重定向
 }
 ```
@@ -225,21 +225,21 @@ USE_PROXY = False
 
 ???+ question "OpenRouter 模型调用失败，提示 API Key 无效"
     请确认：
-    
+
     1. API Key 格式正确（OpenRouter 的 Key 通常以 `sk-or-` 开头）
     2. Key 已在配置文件中正确设置
     3. OpenRouter 账户余额充足
 
 ???+ question "One-API 模型无法使用"
     请检查：
-    
+
     1. `API_URL_REDIRECT` 中的地址是否正确（注意末尾不要有多余的斜杠）
     2. 模型名称是否与 One-API 后台配置的名称一致
     3. One-API 服务是否正常运行
 
 ???+ question "如何知道中转服务支持哪些模型？"
     这取决于您使用的具体中转服务：
-    
+
     - **OpenRouter**：访问 [OpenRouter Models](https://openrouter.ai/models) 查看完整模型列表
     - **One-API**：在您的 One-API 后台查看已配置的渠道和模型
     - **其他服务**：参考服务商的文档或联系客服
@@ -251,5 +251,3 @@ USE_PROXY = False
 - [配置详解](../get_started/configuration.md) — 了解所有配置项的详细说明
 - [模型概览](overview.md) — 查看所有支持的模型及其特点
 - [OpenAI 接入](openai.md) — 直接使用 OpenAI 官方 API
-
-

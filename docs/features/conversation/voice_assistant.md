@@ -151,11 +151,11 @@ ALIYUN_SECRET = "您的AccessKey Secret"
 
 ???+ question "点击插件后提示'导入依赖失败'"
     这表示语音识别所需的 Python 依赖包未正确安装。请按照前提条件部分的说明安装依赖：
-    
+
     ```bash
     pip install --upgrade pyOpenSSL webrtcvad scipy git+https://github.com/aliyun/alibabacloud-nls-python-sdk.git
     ```
-    
+
     安装完成后重启 GPT Academic。
 
 ???+ question "提示'没有阿里云语音识别 APPKEY 和 TOKEN'"
@@ -163,14 +163,14 @@ ALIYUN_SECRET = "您的AccessKey Secret"
 
 ???+ question "麦克风授权按钮无法点击或不出现"
     这通常是 HTTPS/安全上下文的问题：
-    
+
     1. 如果通过非 localhost 地址访问，需要配置 HTTPS
     2. 尝试使用 `http://localhost:7860` 或 `http://127.0.0.1:7860` 访问
     3. 检查浏览器设置中是否禁用了麦克风权限
 
 ???+ question "语音识别不准确，有很多错字"
     语音识别准确率受多种因素影响：
-    
+
     1. 确保在安静环境中使用
     2. 说话时保持适中的语速
     3. 尽量使用标准普通话
@@ -186,5 +186,3 @@ ALIYUN_SECRET = "您的AccessKey Secret"
 - [基础操作](../basic_operations.md) — 了解 GPT Academic 的基本使用方法
 - [配置详解](../../get_started/configuration.md) — 完整的配置项说明
 - [联网搜索](internet_search.md) — 另一种增强对话能力的功能
-
-

@@ -124,7 +124,7 @@ AUTO_CONTEXT_CLIP_ENABLE = True  # 启用自动裁剪
     | gpt-4-turbo | 128K tokens |
     | qwen-max | 32K tokens |
     | deepseek-chat | 64K tokens |
-    
+
     如果您经常处理长文本，建议选择上下文窗口更大的模型。
 
 ### bad_request（请求格式错误）
@@ -242,5 +242,3 @@ MAX_RETRY = 3         # 增加重试次数
 - [网络问题排查](network_issues.md) — 代理和连接问题专项指南
 - [配置详解](../get_started/configuration.md) — 了解配置文件结构
 - [国产模型接入](../models/chinese_models.md) — 无需代理的模型选择
-
-

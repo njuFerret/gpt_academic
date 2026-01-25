@@ -147,5 +147,3 @@ JINA_API_KEY = "jina_your-api-key-here"
 - [配置详解](../../get_started/configuration.md) — 查看所有配置选项
 - [多模型询问](multi_model_query.md) — 同时询问多个 AI 模型
 - [虚空终端](../agents/void_terminal.md) — 用自然语言调用各种插件
-
-

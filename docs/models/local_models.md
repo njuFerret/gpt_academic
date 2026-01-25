@@ -236,44 +236,44 @@ python main.py
     这通常意味着您的显卡显存不足以加载完整模型。您可以尝试以下解决方案：
 
     **方案一：使用量化模型**
-    
+
     在配置中启用 INT8 或 INT4 量化：
     ```python
     LOCAL_MODEL_QUANT = "INT4"  # 显存占用约为 FP16 的 1/4
     ```
 
     **方案二：选择更小的模型**
-    
+
     如果使用 ChatGLM4-9B 显存不足，可以尝试 ChatGLM3-6B 或通过 Ollama 使用更小的量化模型。
 
     **方案三：使用 CPU 模式（仅供测试）**
-    
+
     将 `LOCAL_MODEL_DEVICE` 设为 `"cpu"` 可以完全避免显存问题，但推理速度会非常缓慢。
 
 ### Ollama 连接失败
 
 ???+ question "提示无法连接到 Ollama 服务"
     首先确认 Ollama 服务正在运行：
-    
+
     ```bash
     # 检查 Ollama 状态
     ollama list
-    
+
     # 如果服务未启动，手动启动
     ollama serve
     ```
-    
+
     如果您修改了 Ollama 的监听地址，请确保 `OLLAMA_API_BASE` 配置正确。
 
 ### 模型响应异常
 
 ???+ question "模型返回空回复或乱码"
     这可能是由于模型加载不完整或配置错误导致的。请检查：
-    
+
     1. 模型文件是否完整下载
     2. `CHATGLM_LOCAL_MODEL_PATH` 路径是否正确
     3. 终端是否有错误日志输出
-    
+
     如果问题持续，尝试重新下载模型或切换到其他模型进行测试。
 
 ---
@@ -285,5 +285,3 @@ python main.py
 - 在 [配置详解](../get_started/configuration.md) 中了解更多高级配置选项
 - 学习 [多模型询问](../features/conversation/multi_model_query.md) 功能，对比本地模型与云端模型的表现
 - 探索 [插件开发](../customization/plugin_development.md)，为本地模型定制专属功能
-
-

@@ -574,4 +574,3 @@ def generate_payload(inputs:str, llm_kwargs:dict, history:list, system_prompt:st
     if openai_force_temperature_one:
         payload.pop('temperature')
     return headers,payload
-

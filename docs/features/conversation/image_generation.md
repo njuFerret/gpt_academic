@@ -144,7 +144,7 @@ A fluffy orange tabby cat sitting on a windowsill, looking out at a rainy day, s
 
 ???+ question "生成的图片与描述不符"
     可能的原因和解决方法：
-    
+
     - 描述过于模糊：增加具体细节，如颜色、风格、光线等
     - 使用了中文：尝试用英文重新描述
     - 描述过长或过于复杂：简化描述，突出关键元素
@@ -152,7 +152,7 @@ A fluffy orange tabby cat sitting on a windowsill, looking out at a rainy day, s
 
 ???+ question "调用失败，提示 API 错误"
     请检查：
-    
+
     - API Key 是否有效且有足够额度
     - 网络连接是否正常（国内用户需配置代理）
     - 是否超出了 API 调用频率限制
@@ -170,6 +170,3 @@ A fluffy orange tabby cat sitting on a windowsill, looking out at a rainy day, s
 - [OpenAI 接入](../../models/openai.md) — 配置 OpenAI API Key
 - [基础操作](../basic_operations.md) — 了解模型切换等基础操作
 - [配置详解](../../get_started/configuration.md) — 代理和网络配置
-
-
-

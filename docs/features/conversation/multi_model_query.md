@@ -142,5 +142,3 @@ MULTI_QUERY_LLM_MODELS = "gpt-3.5-turbo&gpt-4o"
 - [模型支持概览](../../models/overview.md) — 了解各模型的特点和配置方法
 - [配置详解](../../get_started/configuration.md) — 完整的配置项说明
 - [基础操作](../basic_operations.md) — 界面基本使用方法
-
-

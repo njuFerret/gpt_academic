@@ -177,7 +177,7 @@ Live2D 形象支持以下互动方式：
 ```python
 # 主题配置
 THEME = "Default"                                    # 当前主题
-AVAIL_THEMES = ["Default", "Chuanhu-Small-and-Beautiful", "High-Contrast", 
+AVAIL_THEMES = ["Default", "Chuanhu-Small-and-Beautiful", "High-Contrast",
                 "Gstaff/Xkcd", "NoCrypt/Miku"]       # 可选主题列表
 
 # 字体配置
@@ -268,5 +268,3 @@ GPT Academic 的配置有三个来源，优先级从高到低依次为：
 - [配置详解](../get_started/configuration.md) —— 了解所有配置选项
 - [自定义按钮](custom_buttons.md) —— 添加个性化功能按钮
 - [插件开发](plugin_development.md) —— 开发自定义插件
-
-

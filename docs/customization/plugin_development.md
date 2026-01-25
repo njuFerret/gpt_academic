@@ -44,7 +44,7 @@ import datetime
 def 历史上的今天(txt, llm_kwargs, plugin_kwargs, chatbot, history, system_prompt, user_request):
     """
     插件入口函数
-    
+
     参数说明:
         txt           - 用户在输入框中输入的文本
         llm_kwargs    - 大模型参数（温度、top_p 等）
@@ -56,17 +56,17 @@ def 历史上的今天(txt, llm_kwargs, plugin_kwargs, chatbot, history, system_
     """
     # 清空历史，避免上下文过长
     history = []
-    
+
     # 获取当前日期
     today = datetime.date.today()
-    
+
     # 在界面上显示处理状态
     chatbot.append(("正在查询历史上的今天...", "请稍候..."))
     yield from update_ui(chatbot=chatbot, history=history)
-    
+
     # 构造提问
     query = f"请列举历史上 {today.month} 月 {today.day} 日发生的 3 个重要事件，简要说明每个事件的背景和影响。"
-    
+
     # 调用大模型并流式输出
     response = yield from request_gpt_model_in_new_thread_with_ui_alive(
         inputs=query,
@@ -76,7 +76,7 @@ def 历史上的今天(txt, llm_kwargs, plugin_kwargs, chatbot, history, system_
         history=history,
         sys_prompt="你是一位历史学专家，擅长介绍历史事件。"
     )
-    
+
     # 更新对话历史
     history.extend([query, response])
     yield from update_ui(chatbot=chatbot, history=history)
@@ -101,7 +101,7 @@ def 历史上的今天(txt, llm_kwargs, plugin_kwargs, chatbot, history, system_
 ```python
 function_plugins = {
     # ... 其他插件 ...
-    
+
     "历史上的今天": {
         "Group": "对话",           # 所属分组，用于插件分类
         "Color": "secondary",      # 按钮颜色：primary/secondary/stop
@@ -109,7 +109,7 @@ function_plugins = {
         "Info": "查询历史上今天发生的重要事件",  # 插件说明
         "Function": HotReload(历史上的今天),    # 关联函数，HotReload 启用热重载
     },
-    
+
     # ... 其他插件 ...
 }
 ```
@@ -142,18 +142,18 @@ class HistoryToday_Wrap(GptAcademicPluginTemplate):
     """
     类式插件必须继承 GptAcademicPluginTemplate
     """
-    
+
     def __init__(self):
         """
         初始化函数。注意：execute 方法可能在不同线程中运行，
         避免在此存储会被多线程访问的状态。
         """
         pass
-    
+
     def define_arg_selection_menu(self):
         """
         定义二级选项菜单
-        
+
         返回一个字典，每个键值对对应一个参数。
         支持的参数类型：
           - type="string": 文本输入框
@@ -166,7 +166,7 @@ class HistoryToday_Wrap(GptAcademicPluginTemplate):
                 default_value="",
                 type="string"
             ).model_dump_json(),
-            
+
             "event_count": ArgProperty(
                 title="事件数量",
                 description="选择要列举的历史事件数量",
@@ -174,7 +174,7 @@ class HistoryToday_Wrap(GptAcademicPluginTemplate):
                 default_value="3个事件",
                 type="dropdown"
             ).model_dump_json(),
-            
+
             "advanced_arg": ArgProperty(
                 title="额外要求",
                 description="如有特殊要求可在此输入，如：只列举中国历史事件",
@@ -183,11 +183,11 @@ class HistoryToday_Wrap(GptAcademicPluginTemplate):
             ).model_dump_json(),
         }
         return gui_definition
-    
+
     def execute(txt, llm_kwargs, plugin_kwargs, chatbot, history, system_prompt, user_request):
         """
         执行插件主逻辑
-        
+
         用户在二级菜单中的选择会通过 plugin_kwargs 字典传入。
         字典的键与 define_arg_selection_menu 中定义的参数名对应。
         """
@@ -195,7 +195,7 @@ class HistoryToday_Wrap(GptAcademicPluginTemplate):
         main_input = plugin_kwargs.get("main_input", "")
         event_count = plugin_kwargs.get("event_count", "3个事件")
         advanced_arg = plugin_kwargs.get("advanced_arg", "")
-        
+
         # 解析日期
         if main_input:
             try:
@@ -204,20 +204,20 @@ class HistoryToday_Wrap(GptAcademicPluginTemplate):
                 month, day = datetime.date.today().month, datetime.date.today().day
         else:
             month, day = datetime.date.today().month, datetime.date.today().day
-        
+
         # 解析事件数量
         count = int(event_count.replace("个事件", ""))
-        
+
         # 构造提问
         query = f"请列举历史上 {month} 月 {day} 日发生的 {count} 个重要事件。"
         if advanced_arg:
             query += f" 额外要求：{advanced_arg}"
-        
+
         # 清空历史并显示状态
         history = []
         chatbot.append((f"查询 {month}月{day}日 的历史事件", "正在查询..."))
         yield from update_ui(chatbot=chatbot, history=history)
-        
+
         # 调用大模型
         response = yield from request_gpt_model_in_new_thread_with_ui_alive(
             inputs=query,
@@ -227,7 +227,7 @@ class HistoryToday_Wrap(GptAcademicPluginTemplate):
             history=history,
             sys_prompt="你是一位历史学专家。"
         )
-        
+
         history.extend([query, response])
         yield from update_ui(chatbot=chatbot, history=history)
 ```
@@ -279,7 +279,7 @@ def 处理上传文件(txt, llm_kwargs, plugin_kwargs, chatbot, history, system_
         chatbot.append(("错误", "请先上传文件或输入有效路径"))
         yield from update_ui(chatbot=chatbot, history=history)
         return
-    
+
     for file_path in file_list:
         # 处理每个文件...
         pass
@@ -296,7 +296,7 @@ def 批量处理(txt, llm_kwargs, plugin_kwargs, chatbot, history, system_prompt
     # 准备多个任务
     inputs_array = ["任务1", "任务2", "任务3"]
     inputs_show_user_array = inputs_array.copy()
-    
+
     # 并行执行
     results = yield from request_gpt_model_multi_threads_with_very_awesome_ui_and_target(
         inputs_array=inputs_array,
@@ -306,7 +306,7 @@ def 批量处理(txt, llm_kwargs, plugin_kwargs, chatbot, history, system_prompt
         history_array=[[] for _ in inputs_array],
         sys_prompt_array=["" for _ in inputs_array],
     )
-    
+
     # results 是所有任务结果的列表
 ```
 
@@ -319,12 +319,12 @@ from toolbox import on_report_generated
 
 def 生成报告(txt, llm_kwargs, plugin_kwargs, chatbot, history, system_prompt, user_request):
     # ... 生成报告内容 ...
-    
+
     # 保存文件
     report_path = "path/to/report.pdf"
     with open(report_path, "wb") as f:
         f.write(report_content)
-    
+
     # 注册到下载区
     cookies = user_request.get("cookies", {})
     cookies, report_files, chatbot = on_report_generated(
@@ -332,7 +332,7 @@ def 生成报告(txt, llm_kwargs, plugin_kwargs, chatbot, history, system_prompt
         files=[report_path],
         chatbot=chatbot
     )
-    
+
     yield from update_ui(chatbot=chatbot, history=history)
 ```
 
@@ -368,5 +368,3 @@ logger.error("发生错误")
 - 在 [GitHub Issues](https://github.com/binary-husky/gpt_academic/issues) 中寻找灵感或提交您的插件
 - 探索 [自定义按钮](custom_buttons.md) 功能，创建更轻量的快捷功能
 - 查阅 [主题定制](theme_customization.md)，为您的插件界面增添个性
-
-

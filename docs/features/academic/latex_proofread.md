@@ -142,25 +142,25 @@ latexdiff --encoding=utf8 merge.tex merge_proofread_en.tex --flatten > merge_dif
 
 ???+ question "PDF 编译失败，但纠错已完成"
     这种情况下，结果压缩包中仍然包含纠错后的 `.tex` 源文件，您可以下载后在本地环境中手动编译。编译失败通常是因为：
-    
+
     - 项目依赖特定的 LaTeX 宏包，而运行环境未安装
     - 原始项目本身存在编译警告或错误
     - 字体缺失（尤其在 Linux 环境下处理含中文的项目时）
-    
+
     检查对话区的错误信息，通常能找到具体原因。
 
 ???+ question "对比 PDF 中某些修改看起来不合理"
     AI 纠错不是完美的，有时会出现以下情况：
-    
+
     - 将正确的表达改成了另一种正确但不同的表达
     - 对专业术语进行了不恰当的"修正"
     - 理解偏差导致的语义改变
-    
+
     这正是我们提供对比 PDF 的原因——您可以审核每一处修改，保留合理的、撤销不当的。使用更高性能的模型（如 GPT-4o）可以显著减少此类问题。
 
 ???+ question "处理速度较慢如何优化"
     处理速度取决于项目大小和 API 响应时间。以下方法可以加快处理：
-    
+
     1. 在配置文件中增大 `DEFAULT_WORKER_NUM` 的值，提高并行处理数
     2. 使用响应更快的模型（如 `gpt-3.5-turbo`），但可能牺牲一定的纠错质量
     3. 如果项目非常大，考虑分章节处理
@@ -175,6 +175,3 @@ latexdiff --encoding=utf8 merge.tex merge_proofread_en.tex --flatten > merge_dif
 - [LaTeX 项目处理](latex_polish.md) — 基础润色功能的详细说明
 - [Arxiv 论文翻译](arxiv_translation.md) — 翻译 Arxiv 论文为中文
 - [配置详解](../../get_started/configuration.md) — 了解 DEFAULT_WORKER_NUM 等配置项
-
-
-

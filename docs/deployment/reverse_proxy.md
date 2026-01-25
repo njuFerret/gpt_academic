@@ -71,25 +71,25 @@ server {
     location / {
         proxy_pass http://127.0.0.1:7860;
         proxy_http_version 1.1;
-        
+
         # WebSocket 支持（Gradio 需要）
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
-        
+
         # 传递真实客户端信息
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
-        
+
         # 超时设置（大文件上传和长时间推理需要）
         proxy_connect_timeout 300s;
         proxy_send_timeout 300s;
         proxy_read_timeout 300s;
-        
+
         # 禁用缓冲以支持流式输出
         proxy_buffering off;
-        
+
         # 文件上传大小限制
         client_max_body_size 100M;
     }
@@ -168,7 +168,7 @@ server {
     # SSL 证书配置
     ssl_certificate /etc/nginx/ssl/your_certificate.crt;
     ssl_certificate_key /etc/nginx/ssl/your_private.key;
-    
+
     # SSL 安全配置
     ssl_protocols TLSv1.2 TLSv1.3;
     ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384;
@@ -183,17 +183,17 @@ server {
     location / {
         proxy_pass http://127.0.0.1:7860;
         proxy_http_version 1.1;
-        
+
         # WebSocket 支持
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
-        
+
         # 传递真实客户端信息
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
-        
+
         # 超时和缓冲设置
         proxy_connect_timeout 300s;
         proxy_send_timeout 300s;
@@ -222,14 +222,14 @@ CUSTOM_PATH = "/gpt"
 location /gpt/ {
     proxy_pass http://127.0.0.1:7860/gpt/;
     proxy_http_version 1.1;
-    
+
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header X-Forwarded-Proto $scheme;
-    
+
     proxy_connect_timeout 300s;
     proxy_send_timeout 300s;
     proxy_read_timeout 300s;
@@ -252,10 +252,10 @@ upstream gpt_academic_cluster {
     server 127.0.0.1:7860;
     server 127.0.0.1:7861;
     server 127.0.0.1:7862;
-    
+
     # 可选：启用会话保持（基于 IP）
     # ip_hash;
-    
+
     # 可选：按权重分配
     # server 127.0.0.1:7860 weight=3;
     # server 127.0.0.1:7861 weight=2;
@@ -265,7 +265,7 @@ upstream gpt_academic_cluster {
 server {
     listen 443 ssl http2;
     server_name your-domain.com;
-    
+
     # SSL 配置省略...
 
     location / {
@@ -346,11 +346,11 @@ sudo systemctl enable caddy
 
 ???+ question "HTTPS 证书申请失败"
     常见原因包括：
-    
+
     - 域名 DNS 未正确解析到服务器 IP
     - 服务器 80 端口被防火墙阻止
     - 域名已达到 Let's Encrypt 的速率限制
-    
+
     请检查 DNS 解析和防火墙设置。如果遇到速率限制，可以等待一小时后重试，或在测试阶段使用 `--staging` 参数。
 
 ???+ question "响应很慢或经常超时"
@@ -368,5 +368,3 @@ sudo systemctl enable caddy
 - [Docker 部署](docker.md) — 容器化部署方案
 - [配置详解](../get_started/configuration.md) — 了解 WEB_PORT、CUSTOM_PATH 等配置项
 - [配置参考](../reference/config_reference.md) — 所有配置项速查
-
-

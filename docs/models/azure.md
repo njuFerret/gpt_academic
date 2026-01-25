@@ -103,7 +103,7 @@ AZURE_CFG_ARRAY = {
         "AZURE_ENGINE": "gpt35-deployment",      # 第一个部署的名称
         "AZURE_MODEL_MAX_TOKEN": 4096,           # 模型最大 token 数
     },
-    
+
     # 第二个模型：GPT-4
     "azure-gpt-4": {
         "AZURE_ENDPOINT": "https://你的资源名称.openai.azure.com/",
@@ -111,7 +111,7 @@ AZURE_CFG_ARRAY = {
         "AZURE_ENGINE": "gpt4-deployment",       # 第二个部署的名称
         "AZURE_MODEL_MAX_TOKEN": 8192,
     },
-    
+
     # 第三个模型：GPT-4 32K（如果有）
     "azure-gpt-4-32k": {
         "AZURE_ENDPOINT": "https://你的资源名称.openai.azure.com/",
@@ -132,7 +132,7 @@ AVAIL_LLM_MODELS = ["azure-gpt-35-turbo", "azure-gpt-4", "azure-gpt-4-32k"]
 
 !!! tip "混合使用多种 API"
     您可以在 `AVAIL_LLM_MODELS` 中同时包含 Azure 模型和其他模型（如 OpenAI、国产模型等），实现在同一界面上灵活切换不同来源的模型：
-    
+
     ```python
     AVAIL_LLM_MODELS = [
         "azure-gpt-4",         # Azure
@@ -168,7 +168,7 @@ python main.py
 
 ???+ question "请求 Azure OpenAI 时频繁超时"
     Azure OpenAI 的服务器位于海外，国内用户可能偶尔遇到网络波动。您可以尝试：
-    
+
     1. 选择距离较近的 Azure 区域（如 Japan East）
     2. 适当增加超时时间，在 `config_private.py` 中设置：
        ```python
@@ -179,9 +179,9 @@ python main.py
 
 ???+ question "提示 Rate limit exceeded"
     Azure OpenAI 对每分钟请求数（RPM）和每分钟 token 数（TPM）有配额限制。免费试用和低级别订阅的配额较低。
-    
+
     解决方案：
-    
+
     1. 在 Azure 门户中申请提升配额
     2. 在 GPT Academic 中降低并发请求数
     3. 升级 Azure 订阅等级
@@ -212,5 +212,3 @@ Azure OpenAI 配置完成后，您可以：
 - 了解更多 [配置详解](../get_started/configuration.md) 中的高级选项
 - 探索 [多模型询问](../features/conversation/multi_model_query.md) 功能，对比 Azure 与其他模型的表现
 - 如果您的企业需要更复杂的部署方案，请参阅 [Docker 部署](../deployment/docker.md) 文档
-
-

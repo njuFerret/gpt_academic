@@ -1004,4 +1004,3 @@ article img,
     right: max(2rem, calc(env(safe-area-inset-right) + 0.5rem));
   }
 }
-

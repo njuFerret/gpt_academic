@@ -117,7 +117,7 @@ Google Scholar 每页通常显示 10 篇论文。如果搜索结果有多页，�
 
 ???+ question "提示获取文献失败"
     这通常是触发了 Google 的反爬虫机制。可能的原因和解决方法：
-    
+
     - **代理问题**：确认代理配置正确且能正常访问 Google
     - **请求频率过高**：等待几分钟后重试
     - **需要验证码**：在浏览器中访问 Google Scholar，完成人机验证后再使用此功能
@@ -139,5 +139,3 @@ Google Scholar 每页通常显示 10 篇论文。如果搜索结果有多页，�
 - [论文阅读助手](paper_reading.md) — 深入分析单篇论文
 - [Arxiv 论文翻译](arxiv_translation.md) — 翻译感兴趣的 arxiv 论文
 - [联网搜索](../conversation/internet_search.md) — 其他联网信息检索方式
-
-

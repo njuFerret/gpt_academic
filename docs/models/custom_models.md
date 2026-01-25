@@ -194,7 +194,7 @@ def predict_no_ui_long_connection(
 ) -> str:
     """
     非界面模式的模型调用函数，用于插件和后台任务。
-    
+
     Args:
         inputs: 用户本次输入的内容
         llm_kwargs: LLM 调用参数，包含 temperature、llm_model 等
@@ -202,30 +202,30 @@ def predict_no_ui_long_connection(
         sys_prompt: 系统提示词
         observe_window: 观测窗口，用于跨线程传递输出 [当前输出, 看门狗时间戳, ...]
         console_silence: 是否静默控制台输出
-        
+
     Returns:
         模型的完整响应文本
     """
     # 检查 API 密钥
     if not MYMODEL_API_KEY:
         raise RuntimeError("MYMODEL_API_KEY 未配置，请在 config_private.py 中设置")
-    
+
     # 处理空输入
     if not inputs.strip():
         inputs = "你好"
-    
+
     # 构建请求消息
     messages = [{"role": "system", "content": sys_prompt}]
-    
+
     # 添加历史对话
     for i in range(0, len(history), 2):
         if i + 1 < len(history):
             messages.append({"role": "user", "content": history[i]})
             messages.append({"role": "assistant", "content": history[i + 1]})
-    
+
     # 添加当前输入
     messages.append({"role": "user", "content": inputs})
-    
+
     # 构建请求体（根据 API 格式调整）
     payload = {
         "model": llm_kwargs.get("llm_model", "mymodel-default"),
@@ -233,16 +233,16 @@ def predict_no_ui_long_connection(
         "temperature": llm_kwargs.get("temperature", 0.7),
         "stream": True,
     }
-    
+
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {MYMODEL_API_KEY}",
     }
-    
+
     # 发送请求（带重试机制）
     endpoint = "https://api.mymodel.com/v1/chat/completions"
     retry_count = 0
-    
+
     while True:
         try:
             response = requests.post(
@@ -260,30 +260,30 @@ def predict_no_ui_long_connection(
                 raise TimeoutError(TIMEOUT_MSG)
             logger.warning(f"请求失败，正在重试 ({retry_count}/{MAX_RETRY})...")
             time.sleep(1)
-    
+
     # 解析流式响应
     result = ""
     watch_dog_patience = 5  # 看门狗超时时间
-    
+
     for line in response.iter_lines():
         if not line:
             continue
-        
+
         # 根据 API 返回格式解析（以 OpenAI 格式为例）
         line_text = line.decode("utf-8")
         if line_text.startswith("data: "):
             line_text = line_text[6:]
-        
+
         if line_text == "[DONE]":
             break
-        
+
         try:
             import json
             chunk = json.loads(line_text)
             delta = chunk.get("choices", [{}])[0].get("delta", {})
             content = delta.get("content", "")
             result += content
-            
+
             # 更新观测窗口（如果提供）
             if observe_window is not None:
                 observe_window[0] = result
@@ -293,10 +293,10 @@ def predict_no_ui_long_connection(
                         raise RuntimeError("用户取消了请求")
         except json.JSONDecodeError:
             continue
-    
+
     if not console_silence:
         logger.info(f"[MyModel Response] {result[:100]}...")
-    
+
     return result
 
 
@@ -312,9 +312,9 @@ def predict(
 ):
     """
     界面对话模式的模型调用函数。
-    
+
     这是一个生成器函数，通过 yield 实现流式输出。
-    
+
     Args:
         inputs: 用户输入
         llm_kwargs: LLM 参数
@@ -330,16 +330,16 @@ def predict(
         chatbot.append((inputs, "[错误] MYMODEL_API_KEY 未配置"))
         yield from update_ui(chatbot=chatbot, history=history)
         return
-    
+
     # 处理基础功能区按钮
     if additional_fn is not None:
         from core_functional import handle_core_functionality
         inputs, history = handle_core_functionality(additional_fn, inputs, history, chatbot)
-    
+
     # 添加用户输入到对话框
     chatbot.append((inputs, ""))
     yield from update_ui(chatbot=chatbot, history=history, msg="正在等待响应...")
-    
+
     # 构建请求（与 predict_no_ui_long_connection 类似）
     messages = [{"role": "system", "content": system_prompt}]
     for i in range(0, len(history), 2):
@@ -347,22 +347,22 @@ def predict(
             messages.append({"role": "user", "content": history[i]})
             messages.append({"role": "assistant", "content": history[i + 1]})
     messages.append({"role": "user", "content": inputs})
-    
+
     payload = {
         "model": llm_kwargs.get("llm_model", "mymodel-default"),
         "messages": messages,
         "temperature": llm_kwargs.get("temperature", 0.7),
         "stream": True,
     }
-    
+
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {MYMODEL_API_KEY}",
     }
-    
+
     # 发送请求
     endpoint = "https://api.mymodel.com/v1/chat/completions"
-    
+
     try:
         response = requests.post(
             endpoint,
@@ -376,37 +376,37 @@ def predict(
         chatbot[-1] = (inputs, TIMEOUT_MSG)
         yield from update_ui(chatbot=chatbot, history=history, msg="请求超时")
         return
-    
+
     # 流式解析并更新界面
     gpt_reply = ""
     history.append(inputs)
     history.append("")
-    
+
     for line in response.iter_lines():
         if not line:
             continue
-        
+
         line_text = line.decode("utf-8")
         if line_text.startswith("data: "):
             line_text = line_text[6:]
-        
+
         if line_text == "[DONE]":
             break
-        
+
         try:
             import json
             chunk = json.loads(line_text)
             delta = chunk.get("choices", [{}])[0].get("delta", {})
             content = delta.get("content", "")
             gpt_reply += content
-            
+
             # 更新界面
             history[-1] = gpt_reply
             chatbot[-1] = (inputs, gpt_reply)
             yield from update_ui(chatbot=chatbot, history=history)
         except json.JSONDecodeError:
             continue
-    
+
     logger.info(f"[MyModel] 对话完成")
 ```
 
@@ -503,5 +503,3 @@ print(result)
 - [中转渠道接入](transit_api.md) — 使用前缀方式快速接入
 - [配置参考](../reference/config_reference.md) — 配置项完整说明
 - [插件开发](../customization/plugin_development.md) — 了解如何开发功能插件
-
-

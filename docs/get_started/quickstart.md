@@ -109,7 +109,7 @@ GPT Academic 的界面设计注重实用性，主要分为以下几个功能区�
 
 <!-- IMAGE: gs_02_ui_overview.png -->
 <!-- 描述: GPT Academic 主界面截图，使用标注说明各区域功能 -->
-<!-- 标注: 
+<!-- 标注:
   ① 对话显示区 - 左侧大区域
   ② 输入区 - 右上方的文本输入框和提交按钮
   ③ 基础功能区 - 包含"学术润色"等预设按钮
@@ -148,7 +148,7 @@ GPT Academic 的界面设计注重实用性，主要分为以下几个功能区�
     **如果提示"缺少 api_key"**：请检查 `config_private.py` 中的 API 密钥是否正确配置。
 
     **如果提示"连接超时"**：
-    
+
     - 使用 OpenAI 官方 API 时，请检查代理配置是否正确
     - 使用国内模型时，请检查网络连接是否正常
 
@@ -163,7 +163,7 @@ GPT Academic 的核心特色之一是针对学术场景优化的功能。让我�
 在输入框中粘贴一段需要润色的学术文本，例如：
 
 ```
-This paper propose a new method for image classification. 
+This paper propose a new method for image classification.
 The method is based on deep learning and achieve good results on ImageNet dataset.
 ```
 

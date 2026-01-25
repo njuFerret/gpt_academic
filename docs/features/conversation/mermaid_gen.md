@@ -169,11 +169,11 @@ sequenceDiagram
 
 ???+ question "图表渲染不完整或显示异常"
     这通常是因为生成的图表过于复杂，超出了页面渲染的限制。您可以：
-    
+
     1. 展开对话中的代码块，复制 Mermaid 源代码
     2. 访问 [mermaid.live](https://mermaid.live) 在线编辑器
     3. 粘贴代码进行查看和调整
-    
+
     在线编辑器通常能处理更复杂的图表，还支持导出为 PNG/SVG 图片。
 
 ???+ question "AI 选择的图表类型不合适"
@@ -181,7 +181,7 @@ sequenceDiagram
 
 ???+ question "生成的图表内容不准确"
     图表内容的准确性取决于 AI 对原始内容的理解。如果发现有偏差，您可以：
-    
+
     - 在原始内容中补充更明确的结构描述
     - 在对话中直接指出需要修正的地方，让 AI 重新生成
     - 手动编辑 Mermaid 代码进行调整
@@ -200,6 +200,3 @@ sequenceDiagram
 - [源码分析](../programming/code_analysis.md) — 分析代码项目，生成结构图
 - [虚空终端](../agents/void_terminal.md) — 用自然语言指挥 AI 生成图表
 - [对话保存与载入](conversation_save.md) — 保存包含图表的对话记录
-
-
-

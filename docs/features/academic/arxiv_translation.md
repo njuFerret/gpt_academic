@@ -26,7 +26,7 @@ Arxiv 论文翻译功能具有以下优势：
     - **Windows 用户**：推荐安装 [MiKTeX](https://miktex.org/download) 或 [TeX Live](https://tug.org/texlive/)
     - **Linux 用户**：执行 `sudo apt install texlive-full` 安装完整版
     - **Docker 用户**：官方 Docker 镜像已内置 LaTeX 环境，无需额外配置
-    
+
     如果不安装 LaTeX，翻译仍可正常进行，但只能获得翻译后的 `.tex` 源文件，无法生成 PDF。
 
 ---
@@ -121,30 +121,30 @@ GPT Academic 提供了翻译结果的缓存和云端分享功能：
 
 ???+ question "翻译速度很慢怎么办？"
     论文翻译是计算密集型任务，需要多次调用 API。您可以通过以下方式加速：
-    
+
     1. 使用响应更快的模型，如 `gpt-3.5-turbo` 或 `qwen-turbo`
     2. 在配置文件中增加 `DEFAULT_WORKER_NUM`（默认 8），允许更多并行请求
     3. 配置多个 API Key 实现负载均衡
 
 ???+ question "下载论文失败，提示无法获取源码"
     可能的原因包括：
-    
+
     1. **论文没有开放源码**：部分 Arxiv 论文作者选择不公开 LaTeX 源码，此时无法使用本功能
     2. **网络问题**：检查您的网络连接，如使用代理请确保配置正确
     3. **Arxiv 服务限制**：Arxiv 可能暂时限制了自动化访问，稍后重试即可
-    
+
     对于无法获取源码的论文，建议改用 [PDF 论文翻译](pdf_translation.md) 功能。
 
 ???+ question "PDF 生成失败但翻译完成了"
     这通常是 LaTeX 编译问题。您可以：
-    
+
     1. 下载结果压缩包，获取翻译后的 `.tex` 文件
     2. 使用 Overleaf 或本地 LaTeX 编辑器打开并手动修复编译错误
     3. 确认系统已安装完整的 LaTeX 环境（包括中文字体支持）
 
 ???+ question "部分公式或表格显示异常"
     复杂的 LaTeX 结构在翻译过程中可能出现格式问题。建议：
-    
+
     1. 在高级参数中添加指令"保持所有公式和表格的原始格式"
     2. 下载 `.tex` 源文件后手动调整有问题的部分
     3. 对于公式特别复杂的论文，考虑只翻译文字部分，公式保持原样
@@ -156,5 +156,3 @@ GPT Academic 提供了翻译结果的缓存和云端分享功能：
 - [PDF 论文翻译](pdf_translation.md) — 翻译本地 PDF 格式的论文
 - [基础操作](../basic_operations.md) — 了解文件上传等基础操作
 - [配置详解](../../get_started/configuration.md) — 优化翻译性能的配置建议
-
-

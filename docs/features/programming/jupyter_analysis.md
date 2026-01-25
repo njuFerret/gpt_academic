@@ -127,28 +127,28 @@ experiment.ipynb 的分析如下
 
 ???+ question "提示'找不到任何.ipynb文件'"
     请检查：
-    
+
     - 输入的路径是否正确
     - 如果上传的是压缩包，确保使用 ZIP 格式
     - 确认文件确实以 `.ipynb` 为后缀
 
 ???+ question "分析结果中某些 Cell 缺失"
     可能的原因：
-    
+
     - 该 Cell 内容为空或仅包含空白行
     - 该 Cell 是原始文本（raw cell），系统默认不处理
     - 长 Notebook 分段时某些边界处理导致
 
 ???+ question "分析结果不够准确"
     改善方法：
-    
+
     - 切换到更强的模型（如 GPT-4o 或 qwen-max）
     - 确保 Notebook 中的变量名和函数名具有描述性
     - 对于专业领域的代码，可在分析后进行人工校正
 
 ???+ question "处理多个 Notebook 时顺序混乱"
     系统会按照文件系统的顺序处理，如果需要特定顺序，建议：
-    
+
     - 使用数字前缀命名文件（如 `01_data_load.ipynb`, `02_preprocess.ipynb`）
     - 或者一次只处理一个 Notebook
 
@@ -159,5 +159,3 @@ experiment.ipynb 的分析如下
 - [源码分析](code_analysis.md) — 分析普通源代码项目
 - [基础操作](../basic_operations.md) — 了解文件上传的详细操作
 - [虚空终端](../agents/void_terminal.md) — 用自然语言调用分析功能
-
-

@@ -188,7 +188,7 @@ DEFAULT_WORKER_NUM = 8
 
 ???+ question "提示 'API Key 无效' 或 'Invalid API Key'"
     这通常是密钥配置问题。请检查以下几点：
-    
+
     1. 确认密钥已正确复制，没有多余空格或换行
     2. 检查密钥格式是否以 `sk-` 开头
     3. 确认密钥未被撤销（在 OpenAI 平台检查）
@@ -196,7 +196,7 @@ DEFAULT_WORKER_NUM = 8
 
 ???+ question "提示 '连接超时' 或 'Connection Timeout'"
     这是网络连接问题，国内用户最常遇到。解决方法：
-    
+
     1. 确认 `USE_PROXY = True` 已设置
     2. 检查代理软件是否正常运行
     3. 验证 `proxies` 中的端口号是否正确
@@ -204,7 +204,7 @@ DEFAULT_WORKER_NUM = 8
 
 ???+ question "提示 'Rate limit exceeded'"
     这表示 API 调用频率超过限制。处理方法：
-    
+
     - 等待一段时间后重试
     - 降低 `DEFAULT_WORKER_NUM` 的值
     - 配置多个 API Key 分摊请求
@@ -223,5 +223,3 @@ DEFAULT_WORKER_NUM = 8
 - [中转渠道接入](transit_api.md) — 使用 OpenRouter 等中转服务接入 OpenAI
 - [国产模型接入](chinese_models.md) — 通义千问、智谱等国内替代方案
 - [Azure OpenAI 接入](azure.md) — 使用 Azure 提供的 OpenAI 服务
-
-

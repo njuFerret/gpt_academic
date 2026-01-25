@@ -191,5 +191,3 @@ from toolbox import clear_line_break
 - [配置详解](../get_started/configuration.md) — 了解更多配置选项
 - [插件开发指南](plugin_development.md) — 开发更复杂的功能插件
 - [基础操作](../features/basic_operations.md) — 掌握基础功能按钮的使用方式
-
-

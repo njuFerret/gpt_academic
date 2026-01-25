@@ -162,7 +162,7 @@ curl -x socks5h://127.0.0.1:10808 https://ipapi.co/json/
 - **代理软件未开启系统代理**：部分代理软件区分「系统代理」和「TUN 模式」，GPT Academic 需要的是后者或手动配置的方式。
 
 - **环境变量冲突**：如果系统中设置了 `HTTP_PROXY`、`HTTPS_PROXY` 或 `no_proxy` 环境变量，可能会与程序配置冲突。尝试清除这些环境变量：
-  
+
   ```bash
   unset HTTP_PROXY HTTPS_PROXY no_proxy
   ```
@@ -183,8 +183,8 @@ curl -x socks5h://127.0.0.1:10808 https://ipapi.co/json/
 检查 `WHEN_TO_USE_PROXY` 配置，确保涵盖了所需的场景。如果您需要让所有网络请求都走代理，可以修改此配置：
 
 ```python
-WHEN_TO_USE_PROXY = ["Connect_OpenAI", "Download_LLM", "Download_Gradio_Theme", 
-                     "Connect_Grobid", "Warmup_Modules", "Nougat_Download", 
+WHEN_TO_USE_PROXY = ["Connect_OpenAI", "Download_LLM", "Download_Gradio_Theme",
+                     "Connect_Grobid", "Warmup_Modules", "Nougat_Download",
                      "AutoGen", "Connect_OpenAI_Embedding"]
 ```
 
@@ -305,5 +305,3 @@ API_URL_REDIRECT = {
 - [Docker 部署](../deployment/docker.md) — Docker 环境中的代理配置
 - [常见问题](faq.md) — 其他常见问题解答
 - [模型错误排查](model_errors.md) — API 调用相关的错误排查
-
-

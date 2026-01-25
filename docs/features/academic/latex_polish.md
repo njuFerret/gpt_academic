@@ -70,7 +70,7 @@ GPT Academic 针对 LaTeX 项目提供两类处理功能：**基础处理**和**
     ```bash
     # Ubuntu/Debian
     sudo apt-get install texlive-full
-    
+
     # 如果使用 Docker 部署 GPT Academic
     # 官方 Docker 镜像已内置 LaTeX 环境，无需额外配置
     ```
@@ -150,5 +150,3 @@ If the term "LLM" appears, keep it as is without expanding.
 - [Arxiv 论文翻译](arxiv_translation.md) — 一键翻译 Arxiv 论文
 - [PDF 论文翻译](pdf_translation.md) — 翻译本地 PDF 文档
 - [配置详解](../../get_started/configuration.md) — 了解更多配置选项
-
-

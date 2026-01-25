@@ -83,10 +83,10 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
    ```python
    # 正确
    API_KEY = "sk-xxxxxxxxxxxxxxxx"
-   
+
    # 错误：有多余空格
    API_KEY = " sk-xxxxxxxxxxxxxxxx "
-   
+
    # 错误：引号嵌套
    API_KEY = "'sk-xxxxxxxxxxxxxxxx'"
    ```
@@ -94,7 +94,7 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 3. **检查 KEY 是否有效**
 
    部分 API KEY 有使用期限或额度限制。请登录相应平台确认 KEY 状态：
-   
+
    - OpenAI: [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
    - 阿里云百炼: [dashscope.console.aliyun.com](https://dashscope.console.aliyun.com/)
    - DeepSeek: [platform.deepseek.com](https://platform.deepseek.com/)
@@ -120,7 +120,7 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 2. **检查代理地址和端口**
 
    打开您的代理软件（如 Clash、V2Ray），确认本地监听端口。常见的端口配置：
-   
+
    - Clash 默认：`http://127.0.0.1:7890`
    - V2Ray 默认：`socks5h://127.0.0.1:10808` 或 `http://127.0.0.1:10809`
 
@@ -133,7 +133,7 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
        "http":  "http://127.0.0.1:7890",   # HTTP 代理
        "https": "http://127.0.0.1:7890",
    }
-   
+
    # 或 SOCKS5 代理
    proxies = {
        "http":  "socks5h://127.0.0.1:10808",
@@ -148,7 +148,7 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
    ```bash
    # 设置临时代理
    export https_proxy=http://127.0.0.1:7890
-   
+
    # 测试访问
    curl -I https://api.openai.com
    ```
@@ -345,15 +345,15 @@ TIMEOUT_SECONDS = 60  # 默认为 30 秒
 如果上述内容未能解决您的问题，您可以：
 
 1. **搜索 GitHub Issues**：[github.com/binary-husky/gpt_academic/issues](https://github.com/binary-husky/gpt_academic/issues)
-   
+
    很可能其他用户已经遇到并解决了相同的问题。
 
 2. **查看项目 Wiki**：[github.com/binary-husky/gpt_academic/wiki](https://github.com/binary-husky/gpt_academic/wiki)
-   
+
    包含更多详细的配置说明和使用技巧。
 
 3. **加入 QQ 交流群**：610599535
-   
+
    与其他用户交流，获取实时帮助。
 
 4. **提交 Issue**：如果确认是 Bug，欢迎在 GitHub 提交 Issue，请附上：
@@ -368,5 +368,3 @@ TIMEOUT_SECONDS = 60  # 默认为 30 秒
 - **[安装指南](../get_started/installation.md)** — 详细的安装步骤
 - **[配置详解](../get_started/configuration.md)** — 所有配置项说明
 - **[中转渠道接入](../models/transit_api.md)** — 第三方 API 服务配置
-
-

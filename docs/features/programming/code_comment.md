@@ -103,11 +103,11 @@
 def calculate_distance(point_a, point_b):
     """
     Calculate the Euclidean distance between two points.
-    
+
     Args:
         point_a: A tuple representing the first point coordinates (x, y).
         point_b: A tuple representing the second point coordinates (x, y).
-    
+
     Returns:
         float: The Euclidean distance between the two points.
     """
@@ -148,30 +148,30 @@ AI 生成的注释虽然通常准确，但可能存在对业务逻辑理解偏�
 
 ???+ question "提示'找不到任何python文件'"
     请检查：
-    
+
     - 输入的路径是否正确
     - 项目目录中是否确实包含 `.py` 文件
     - 如果上传的是压缩包，确保使用 ZIP 格式且结构正常
 
 ???+ question "注释生成后部分函数没有 docstring"
     可能的原因：
-    
+
     - 函数过于简单（如只有一行 pass），AI 判断无需注释
     - 函数内容被截断超出了处理限制
     - 处理过程中该文件遇到了错误
-    
+
     您可以在对比 HTML 中检查具体情况。
 
 ???+ question "生成的注释不够准确"
     改善方法：
-    
+
     - 切换到更强的模型（如 GPT-4o）
     - 确保代码本身有清晰的命名和结构
     - 对关键模块可以单独处理，让 AI 有更多上下文空间
 
 ???+ question "处理速度很慢"
     代码注释是计算密集型任务，需要对每个文件进行深度分析。可以尝试：
-    
+
     - 减少同时处理的文件数量
     - 在配置文件中适当增加 `DEFAULT_WORKER_NUM` 以提高并发
     - 使用响应更快的模型
@@ -183,6 +183,3 @@ AI 生成的注释虽然通常准确，但可能存在对业务逻辑理解偏�
 - [源码分析](code_analysis.md) — 快速了解项目整体架构
 - [基础操作](../basic_operations.md) — 了解文件上传的详细操作
 - [配置详解](../../get_started/configuration.md) — 调整模型和并发设置
-
-
-
